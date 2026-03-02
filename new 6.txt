@@ -1,0 +1,43 @@
+public class OopsBannerApp {
+
+    static class CharacterPatternMap {
+        private char character;
+        private String[] pattern;
+
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
+        }
+    }
+
+    public static void main(String[] args) {
+        String[] oPattern = {
+            "  *** ",
+            " * * ",
+            " * * ",
+            " * * ",
+            "  *** "
+        };
+
+        String[] pPattern = {
+            " **** ",
+            " * * ",
+            " **** ",
+            " * ",
+            " * "
+        };
+
+        String[] sPattern = {
+            "  **** ",
+            " * ",
+            "  *** ",
+            "     * ",
+            "
