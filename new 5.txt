@@ -1,0 +1,50 @@
+public class OopsBannerApp {
+
+    public static String[] getLetterO() {
+        return new String[] {
+            "  *** ",
+            " * * ",
+            " * * ",
+            " * * ",
+            "  *** "
+        };
+    }
+
+    public static String[] getLetterP() {
+        return new String[] {
+            " **** ",
+            " * * ",
+            " **** ",
+            " * ",
+            " * "
+        };
+    }
+
+    public static String[] getLetterS() {
+        return new String[] {
+            "  **** ",
+            " * ",
+            "  *** ",
+            "     * ",
+            " **** "
+        };
+    }
+
+    public static void main(String[] args) {
+        String[] letterO1 = getLetterO();
+        String[] letterO2 = getLetterO();
+        String[] letterP = getLetterP();
+        String[] letterS = getLetterS();
+
+        String[][] banner = { letterO1, letterO2, letterP, letterS };
+
+        int height = letterO1.length;
+
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < banner.length; j++) {
+                System.out.print(banner[j][i] + "   ");
+            }
+            System.out.println();
+        }
+    }
+}
