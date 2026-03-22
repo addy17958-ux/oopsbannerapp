@@ -1,0 +1,286 @@
+import java.util.Scanner;
+
+public class EvenOddChecker {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        int numberToCheck = inputScanner.nextInt();
+        int divisor = 2;
+        int remainder = numberToCheck % divisor;
+        boolean isEven = (remainder == 0);
+
+        if (isEven) {
+            System.out.println("Even");
+        } else {
+            System.out.println("Odd");
+        }
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class SimpleCalculator {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        double firstNumber = inputScanner.nextDouble();
+        char operation = inputScanner.next().charAt(0);
+        double secondNumber = inputScanner.nextDouble();
+        double result = 0.0;
+        boolean isValidOperation = true;
+
+        switch (operation) {
+            case '+':
+                result = firstNumber + secondNumber;
+                break;
+            case '-':
+                result = firstNumber - secondNumber;
+                break;
+            case '*':
+                result = firstNumber * secondNumber;
+                break;
+            case '/':
+                if (secondNumber != 0) {
+                    result = firstNumber / secondNumber;
+                } else {
+                    isValidOperation = false;
+                }
+                break;
+            default:
+                isValidOperation = false;
+                break;
+        }
+
+        if (isValidOperation) {
+            System.out.println(result);
+        } else {
+            System.out.println("Error");
+        }
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class NumberSkipper {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        int limitNumber = inputScanner.nextInt();
+        int skipMultiple = 3;
+
+        for (int currentNumber = 1; currentNumber <= limitNumber; currentNumber++) {
+            boolean shouldSkip = (currentNumber % skipMultiple == 0);
+            if (shouldSkip) {
+                continue;
+            }
+            System.out.println(currentNumber);
+        }
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class LoginAuthenticator {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        String correctUsername = "admin";
+        String correctPassword = "password123";
+        int maxAttempts = 3;
+        int currentAttempt = 1;
+        boolean isAuthenticated = false;
+
+        while (currentAttempt <= maxAttempts) {
+            String enteredUsername = inputScanner.next();
+            String enteredPassword = inputScanner.next();
+            boolean isUsernameMatch = enteredUsername.equals(correctUsername);
+            boolean isPasswordMatch = enteredPassword.equals(correctPassword);
+
+            if (isUsernameMatch && isPasswordMatch) {
+                isAuthenticated = true;
+                break;
+            } else {
+                currentAttempt++;
+            }
+        }
+
+        if (isAuthenticated) {
+            System.out.println("Success");
+        } else {
+            System.out.println("Locked");
+        }
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class PrimeChecker {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        int numberToCheck = inputScanner.nextInt();
+        boolean isPrime = true;
+
+        if (numberToCheck <= 1) {
+            isPrime = false;
+        } else if (numberToCheck == 2) {
+            isPrime = true;
+        } else {
+            for (int divisor = 2; divisor <= numberToCheck / 2; divisor++) {
+                boolean isDivisible = (numberToCheck % divisor == 0);
+                if (isDivisible) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+
+        if (isPrime) {
+            System.out.println("Prime");
+        } else {
+            System.out.println("Not Prime");
+        }
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class GradeEvaluator {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        int studentScore = inputScanner.nextInt();
+        int passingScore = 50;
+        boolean hasPassed = studentScore >= passingScore;
+        char finalGrade;
+
+        if (hasPassed) {
+            if (studentScore >= 90) {
+                finalGrade = 'A';
+            } else if (studentScore >= 75) {
+                finalGrade = 'B';
+            } else if (studentScore >= 60) {
+                finalGrade = 'C';
+            } else {
+                finalGrade = 'D';
+            }
+        } else {
+            finalGrade = 'F';
+        }
+
+        switch (finalGrade) {
+            case 'A':
+            case 'B':
+            case 'C':
+                System.out.println("Good");
+                break;
+            case 'D':
+                System.out.println("Pass");
+                break;
+            case 'F':
+                System.out.println("Fail");
+                break;
+            default:
+                System.out.println("Invalid");
+                break;
+        }
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class AtmSimulator {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        double accountBalance = 1000.00;
+        boolean isMachineRunning = true;
+
+        while (isMachineRunning) {
+            int menuChoice = inputScanner.nextInt();
+
+            switch (menuChoice) {
+                case 1:
+                    System.out.println(accountBalance);
+                    break;
+                case 2:
+                    double depositAmount = inputScanner.nextDouble();
+                    boolean isValidDeposit = depositAmount > 0;
+                    if (isValidDeposit) {
+                        accountBalance = accountBalance + depositAmount;
+                    }
+                    break;
+                case 3:
+                    double withdrawalAmount = inputScanner.nextDouble();
+                    boolean isValidWithdrawal = withdrawalAmount > 0;
+                    boolean hasSufficientFunds = withdrawalAmount <= accountBalance;
+                    
+                    if (isValidWithdrawal && hasSufficientFunds) {
+                        accountBalance = accountBalance - withdrawalAmount;
+                    } else if (!hasSufficientFunds) {
+                        System.out.println("Insufficient funds");
+                    }
+                    break;
+                case 4:
+                    isMachineRunning = false;
+                    break;
+                default:
+                    System.out.println("Invalid option");
+                    break;
+            }
+        }
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        int targetNumber = 42; 
+        boolean hasGuessedCorrectly = false;
+        int maxTries = 5;
+        int currentTry = 1;
+
+        while (currentTry <= maxTries) {
+            int userGuess = inputScanner.nextInt();
+            boolean isTooHigh = userGuess > targetNumber;
+            boolean isTooLow = userGuess < targetNumber;
+
+            if (userGuess == targetNumber) {
+                hasGuessedCorrectly = true;
+                break;
+            } else if (isTooHigh) {
+                System.out.println("High");
+            } else if (isTooLow) {
+                System.out.println("Low");
+            }
+            currentTry++;
+        }
+
+        if (hasGuessedCorrectly) {
+            System.out.println("Win");
+        } else {
+            System.out.println("Lose");
+        }
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class PalindromeChecker {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        String originalWord = inputScanner.next();
+        String reversedWord = "";
+        int wordLength = originalWord.length();
+        int startingIndex = wordLength - 1;
+
+        for (int currentIndex = startingIndex; currentIndex >= 0; currentIndex--) {
+            char currentCharacter = originalWord.charAt(currentIndex);
+            reversedWord = reversedWord + currentCharacter;
+        }
+
+        boolean isPalindrome = originalWord.equalsIgnoreCase(reversedWord);
+
+        if (isPalindrome) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not Palindrome");
+        }
+        inputScanner.close();
+    }
+}
