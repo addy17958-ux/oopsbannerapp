@@ -1,0 +1,382 @@
+import java.util.Scanner;
+
+public class ArraySumAverage {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of elements:");
+        int arraySize = inputScanner.nextInt();
+
+        if (arraySize <= 0) {
+            System.err.println("Invalid input. Array size must be greater than zero.");
+            System.exit(1);
+        }
+
+        double[] numbersArray = new double[arraySize];
+        double sumOfElements = 0.0;
+        double averageOfElements = 0.0;
+
+        System.out.println("Enter the elements:");
+        for (int index = 0; index < numbersArray.length; index++) {
+            numbersArray[index] = inputScanner.nextDouble();
+        }
+
+        for (int index = 0; index < numbersArray.length; index++) {
+            sumOfElements += numbersArray[index];
+        }
+
+        averageOfElements = sumOfElements / numbersArray.length;
+
+        System.out.println("Sum: " + sumOfElements);
+        System.out.println("Average: " + averageOfElements);
+
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class ArrayMaxMin {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of elements:");
+        int arraySize = inputScanner.nextInt();
+
+        if (arraySize <= 0) {
+            System.err.println("Invalid input. Array size must be a positive integer.");
+            System.exit(1);
+        }
+
+        int[] dataArray = new int[arraySize];
+
+        System.out.println("Enter the elements:");
+        for (int index = 0; index < dataArray.length; index++) {
+            dataArray[index] = inputScanner.nextInt();
+        }
+
+        int maximumValue = dataArray[0];
+        int minimumValue = dataArray[0];
+
+        for (int index = 1; index < dataArray.length; index++) {
+            if (dataArray[index] > maximumValue) {
+                maximumValue = dataArray[index];
+            }
+            if (dataArray[index] < minimumValue) {
+                minimumValue = dataArray[index];
+            }
+        }
+
+        System.out.println("Maximum: " + maximumValue);
+        System.out.println("Minimum: " + minimumValue);
+
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class ArrayReverser {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of elements:");
+        int arraySize = inputScanner.nextInt();
+
+        if (arraySize <= 0) {
+            System.err.println("Invalid array size.");
+            System.exit(1);
+        }
+
+        int[] originalArray = new int[arraySize];
+        int[] reversedArray = new int[arraySize];
+
+        System.out.println("Enter the elements:");
+        for (int index = 0; index < originalArray.length; index++) {
+            originalArray[index] = inputScanner.nextInt();
+        }
+
+        int reverseIndex = 0;
+        for (int index = originalArray.length - 1; index >= 0; index--) {
+            reversedArray[reverseIndex] = originalArray[index];
+            reverseIndex++;
+        }
+
+        System.out.println("Reversed Array:");
+        for (int index = 0; index < reversedArray.length; index++) {
+            System.out.print(reversedArray[index] + " ");
+        }
+
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class MatrixAddition {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("Enter number of rows:");
+        int rowCount = inputScanner.nextInt();
+        System.out.println("Enter number of columns:");
+        int columnCount = inputScanner.nextInt();
+
+        if (rowCount <= 0 || columnCount <= 0) {
+            System.err.println("Matrix dimensions must be positive integers.");
+            System.exit(1);
+        }
+
+        int[][] matrixA = new int[rowCount][columnCount];
+        int[][] matrixB = new int[rowCount][columnCount];
+        int[][] resultMatrix = new int[rowCount][columnCount];
+
+        System.out.println("Enter elements of Matrix A:");
+        for (int rowIndex = 0; rowIndex < matrixA.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < matrixA[rowIndex].length; colIndex++) {
+                matrixA[rowIndex][colIndex] = inputScanner.nextInt();
+            }
+        }
+
+        System.out.println("Enter elements of Matrix B:");
+        for (int rowIndex = 0; rowIndex < matrixB.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < matrixB[rowIndex].length; colIndex++) {
+                matrixB[rowIndex][colIndex] = inputScanner.nextInt();
+            }
+        }
+
+        for (int rowIndex = 0; rowIndex < resultMatrix.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < resultMatrix[rowIndex].length; colIndex++) {
+                resultMatrix[rowIndex][colIndex] = matrixA[rowIndex][colIndex] + matrixB[rowIndex][colIndex];
+            }
+        }
+
+        System.out.println("Resulting Matrix:");
+        for (int rowIndex = 0; rowIndex < resultMatrix.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < resultMatrix[rowIndex].length; colIndex++) {
+                System.out.print(resultMatrix[rowIndex][colIndex] + " ");
+            }
+            System.out.println();
+        }
+
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class ArrayElementSearch {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("Enter the array size:");
+        int arraySize = inputScanner.nextInt();
+
+        if (arraySize <= 0) {
+            System.err.println("Array size must be strictly positive.");
+            System.exit(1);
+        }
+
+        int[] searchArray = new int[arraySize];
+
+        System.out.println("Enter the elements:");
+        for (int index = 0; index < searchArray.length; index++) {
+            searchArray[index] = inputScanner.nextInt();
+        }
+
+        System.out.println("Enter the target element to find:");
+        int targetElement = inputScanner.nextInt();
+        boolean isFound = false;
+        int foundIndex = -1;
+
+        for (int index = 0; index < searchArray.length; index++) {
+            if (searchArray[index] == targetElement) {
+                isFound = true;
+                foundIndex = index;
+                break;
+            }
+        }
+
+        if (isFound) {
+            System.out.println("Element found at index: " + foundIndex);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class MatrixRowSum {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("Enter number of rows:");
+        int rows = inputScanner.nextInt();
+        System.out.println("Enter number of columns:");
+        int columns = inputScanner.nextInt();
+
+        if (rows <= 0 || columns <= 0) {
+            System.err.println("Dimensions must be positive.");
+            System.exit(1);
+        }
+
+        int[][] dataMatrix = new int[rows][columns];
+
+        System.out.println("Enter matrix elements:");
+        for (int rowIndex = 0; rowIndex < dataMatrix.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < dataMatrix[rowIndex].length; colIndex++) {
+                dataMatrix[rowIndex][colIndex] = inputScanner.nextInt();
+            }
+        }
+
+        for (int rowIndex = 0; rowIndex < dataMatrix.length; rowIndex++) {
+            int currentRowSum = 0;
+            for (int colIndex = 0; colIndex < dataMatrix[rowIndex].length; colIndex++) {
+                currentRowSum += dataMatrix[rowIndex][colIndex];
+            }
+            System.out.println("Sum of row " + rowIndex + ": " + currentRowSum);
+        }
+
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class MatrixMultiplication {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("Enter rows for Matrix A:");
+        int rowsA = inputScanner.nextInt();
+        System.out.println("Enter columns for Matrix A:");
+        int colsA = inputScanner.nextInt();
+
+        System.out.println("Enter rows for Matrix B:");
+        int rowsB = inputScanner.nextInt();
+        System.out.println("Enter columns for Matrix B:");
+        int colsB = inputScanner.nextInt();
+
+        if (rowsA <= 0 || colsA <= 0 || rowsB <= 0 || colsB <= 0) {
+            System.err.println("All dimensions must be positive.");
+            System.exit(1);
+        }
+
+        if (colsA != rowsB) {
+            System.err.println("Multiplication not possible. Columns of A must equal rows of B.");
+            System.exit(1);
+        }
+
+        int[][] matrixA = new int[rowsA][colsA];
+        int[][] matrixB = new int[rowsB][colsB];
+        int[][] productMatrix = new int[rowsA][colsB];
+
+        System.out.println("Enter elements for Matrix A:");
+        for (int rowIndex = 0; rowIndex < matrixA.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < matrixA[rowIndex].length; colIndex++) {
+                matrixA[rowIndex][colIndex] = inputScanner.nextInt();
+            }
+        }
+
+        System.out.println("Enter elements for Matrix B:");
+        for (int rowIndex = 0; rowIndex < matrixB.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < matrixB[rowIndex].length; colIndex++) {
+                matrixB[rowIndex][colIndex] = inputScanner.nextInt();
+            }
+        }
+
+        for (int rowIndex = 0; rowIndex < productMatrix.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < productMatrix[rowIndex].length; colIndex++) {
+                for (int innerIndex = 0; innerIndex < colsA; innerIndex++) {
+                    productMatrix[rowIndex][colIndex] += matrixA[rowIndex][innerIndex] * matrixB[innerIndex][colIndex];
+                }
+            }
+        }
+
+        System.out.println("Product Matrix:");
+        for (int rowIndex = 0; rowIndex < productMatrix.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < productMatrix[rowIndex].length; colIndex++) {
+                System.out.print(productMatrix[rowIndex][colIndex] + " ");
+            }
+            System.out.println();
+        }
+
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class MatrixTranspose {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("Enter rows:");
+        int originalRows = inputScanner.nextInt();
+        System.out.println("Enter columns:");
+        int originalCols = inputScanner.nextInt();
+
+        if (originalRows <= 0 || originalCols <= 0) {
+            System.err.println("Invalid dimensions.");
+            System.exit(1);
+        }
+
+        int[][] originalMatrix = new int[originalRows][originalCols];
+        int[][] transposedMatrix = new int[originalCols][originalRows];
+
+        System.out.println("Enter elements:");
+        for (int rowIndex = 0; rowIndex < originalMatrix.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < originalMatrix[rowIndex].length; colIndex++) {
+                originalMatrix[rowIndex][colIndex] = inputScanner.nextInt();
+            }
+        }
+
+        for (int rowIndex = 0; rowIndex < originalMatrix.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < originalMatrix[rowIndex].length; colIndex++) {
+                transposedMatrix[colIndex][rowIndex] = originalMatrix[rowIndex][colIndex];
+            }
+        }
+
+        System.out.println("Transposed Matrix:");
+        for (int rowIndex = 0; rowIndex < transposedMatrix.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < transposedMatrix[rowIndex].length; colIndex++) {
+                System.out.print(transposedMatrix[rowIndex][colIndex] + " ");
+            }
+            System.out.println();
+        }
+
+        inputScanner.close();
+    }
+}
+import java.util.Scanner;
+
+public class DiagonalSum {
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("Enter the size of the square matrix (N x N):");
+        int matrixDimension = inputScanner.nextInt();
+
+        if (matrixDimension <= 0) {
+            System.err.println("Matrix size must be greater than zero.");
+            System.exit(1);
+        }
+
+        int[][] squareMatrix = new int[matrixDimension][matrixDimension];
+        int primaryDiagonalSum = 0;
+        int secondaryDiagonalSum = 0;
+
+        System.out.println("Enter the matrix elements:");
+        for (int rowIndex = 0; rowIndex < squareMatrix.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < squareMatrix[rowIndex].length; colIndex++) {
+                squareMatrix[rowIndex][colIndex] = inputScanner.nextInt();
+            }
+        }
+
+        for (int index = 0; index < squareMatrix.length; index++) {
+            primaryDiagonalSum += squareMatrix[index][index];
+            secondaryDiagonalSum += squareMatrix[index][squareMatrix.length - 1 - index];
+        }
+
+        System.out.println("Primary Diagonal Sum: " + primaryDiagonalSum);
+        System.out.println("Secondary Diagonal Sum: " + secondaryDiagonalSum);
+
+        inputScanner.close();
+    }
+}
